@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+    skip_before_action :authorize, only: :create
+
     def create
         user = user.create(user_params)
         render json: user
