@@ -1,9 +1,10 @@
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import BlogPosts from './BlogPosts';
 import PostForm from './PostForm';
 import {useEffect, useState} from 'react';
 import LoginForm from './LoginForm'
+import NavBar from './NavBar';
 
 function App() {
   const [user, setUser] = useState(null)
@@ -17,13 +18,15 @@ function App() {
   if (!user) return <LoginForm setUser={setUser}/>
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <PostForm/>
-        <BlogPosts/>
-        <button onClick={handleLogoutClick}>Logout</button>
-      </header>
-    </div>
+    <>
+      <main>
+        <NavBar setUser={setUser}/>
+        <Routes>
+          <Route path="/your-posts" element={<PostForm user={user}/>} /> 
+          <Route path="/" element={<BlogPosts/>} />
+        </Routes>
+      </main>
+    </>
   );
 }
 

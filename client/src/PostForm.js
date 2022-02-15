@@ -1,6 +1,6 @@
 import {useState} from "react"
 
-function PostForm(){
+function PostForm({user}){
     const [text, setText] = useState("")
     const [tags, setTags] = useState("")
 
@@ -13,7 +13,8 @@ function PostForm(){
             },
             body: JSON.stringify({
                 text,
-                tags
+                tags,
+                user_id: user.id
             }),
         }).then ((r)=> {
             console.log(r)
