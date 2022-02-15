@@ -1,4 +1,5 @@
 class BlogPostsController < ApplicationController
+    skip_before_action :authorize
 
     def index
         blog_posts = BlogPost.all
