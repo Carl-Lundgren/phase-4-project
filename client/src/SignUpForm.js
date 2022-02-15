@@ -1,12 +1,11 @@
 import React, {useState} from "react";
-import SignUpForm from "./SignUpForm";
 
-function LoginForm({setUser}) {
+function SignUpForm({setUser}) {
   const [username, setUsername] = useState("")
   
   function handleSubmit(e) {
     e.preventDefault()
-    fetch("/login", {
+    fetch("/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +20,7 @@ function LoginForm({setUser}) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label> Login with your Username: </label>
+        <label> Sign up for an account with a new Username: </label>
         <input 
           type="text" 
           id="username" 
@@ -29,9 +28,8 @@ function LoginForm({setUser}) {
           onChange={e=> setUsername(e.target.value)}
         />
       </form>
-      <SignUpForm setUser={setUser}/>
     </div>
   );
 }
   
-  export default LoginForm;
+  export default SignUpForm;
