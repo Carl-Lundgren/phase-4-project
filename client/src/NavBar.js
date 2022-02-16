@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-function NavBar() { 
-    function handleLogoutClick(setUser){
+function NavBar({setUser}) { 
+    function handleLogoutClick(){
       fetch("/logout", {method: "DELETE"}).then(r=>{
         setUser(null)
       })
@@ -9,7 +9,7 @@ function NavBar() {
 
     const header = {
         display: "flex",
-        background: "#ADD8E6",
+        background: "#000",
         height: "5rem",
         padding: "1rem",
       }

@@ -28,7 +28,7 @@ class BlogPostsController < ApplicationController
 
     private
         def post_params
-            params.permit(:user_id, :text, :tags)
+            params.require(:blog_post).permit(:user_id, :text, :tags)
         end
 
 end

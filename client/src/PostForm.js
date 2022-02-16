@@ -6,6 +6,9 @@ function PostForm({user}){
 
     function handleSubmit(e){
         e.preventDefault()
+        setText("")
+        setTags("")
+
         fetch("/blog_posts", {
             method: "POST",
             headers: {
@@ -16,9 +19,7 @@ function PostForm({user}){
                 tags,
                 user_id: user.id
             }),
-        }).then ((r)=> {
-            console.log(r)
-        })
+        }).then ((r)=> r.json()).then(data=>console.log(data)) 
     }
 
     return(

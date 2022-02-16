@@ -12,6 +12,7 @@ function BlogPostCard({blogPost, removePost}) {
             <h2>{blogPost.text}</h2>
             <p>{blogPost.tags}</p>
             <button onClick={e=> handleDelete(blogPost)}>Delete</button>
+            {/* <button onClick={e=> handleEdit(blogPost)}>Edit</button> */}
         </div>
     )
 }
