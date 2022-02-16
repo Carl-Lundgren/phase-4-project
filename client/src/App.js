@@ -9,12 +9,6 @@ import NavBar from './NavBar';
 function App() {
   const [user, setUser] = useState(null)
 
-  function handleLogoutClick(){
-    fetch("/logout", {method: "DELETE"}).then(r=>{
-      setUser(null)
-    })
-  }
-
   if (!user) return <LoginForm setUser={setUser}/>
 
   return (
@@ -22,8 +16,8 @@ function App() {
       <main>
         <NavBar setUser={setUser}/>
         <Routes>
-          <Route path="/your-posts" element={<PostForm user={user}/>} /> 
-          <Route path="/" element={<BlogPosts/>} />
+          <Route path="/new-post" element={<PostForm user={user}/>} /> 
+          <Route path="/" element={<BlogPosts user={user}/>} />
         </Routes>
       </main>
     </>

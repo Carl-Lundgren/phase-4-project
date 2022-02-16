@@ -19,8 +19,8 @@ function NavBar({setUser}) {
         <Link to="/" style={{padding: "14px", fontSize: "xxx-large", color:"#fff"}}>
             Home
         </Link>
-        <Link to="/your-posts" style={{padding: "28px", fontSize: "xx-large", color:"#fff"}}>
-            Manage Your Posts
+        <Link to="/new-post" style={{padding: "28px", fontSize: "xx-large", color:"#fff"}}>
+            Write A New Post
         </Link>  
         <button onClick={handleLogoutClick}>Logout</button>
       </div>
