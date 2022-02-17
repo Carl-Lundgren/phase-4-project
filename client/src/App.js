@@ -9,12 +9,20 @@ import NavBar from './NavBar';
 function App() {
   const [user, setUser] = useState(null)
 
+  useEffect(()=> {
+    fetch('/me').then((r)=> {
+      if (r.ok) {
+        r.json().then((user) => setUser(user))
+      }
+    })
+  }, [])
+
   if (!user) return <LoginForm setUser={setUser}/>
 
   return (
     <>
       <main>
-        <NavBar setUser={setUser}/>
+        <NavBar setUser={setUser} user={user}/>
         <Routes>
           <Route path="/new-post" element={<PostForm user={user}/>} /> 
           <Route path="/" element={<BlogPosts user={user}/>} />
