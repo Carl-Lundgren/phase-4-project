@@ -28,8 +28,8 @@ function BlogPostCard({blogPost, removePost, user, handleEdit}) {
             <h1>Blog Post Card</h1>
             <h2>{blogPost.text}</h2>
             <p>{blogPost.tags}</p>
-            {(user.id = blogPost.user.id) ?(<button onClick={e=> handleDelete(blogPost)}>Delete</button>):null}
-            {(user.id = blogPost.user.id) ?(<button onClick={handleEditButtonClick}>{editButton}</button>):null}
+            {(user.id === blogPost.user.id) ?(<button onClick={e=> handleDelete(blogPost)}>Delete</button>):null}
+            {(user.id === blogPost.user.id) ?(<button onClick={handleEditButtonClick}>{editButton}</button>):null}
             {editForm ? <EditForm blogPost={blogPost} user={user} handleEdit={handleEdit} handleEditButtonClick={handleEditButtonClick}/>: null}
         </div>
     )

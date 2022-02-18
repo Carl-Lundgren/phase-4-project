@@ -3,7 +3,11 @@ class UsersController < ApplicationController
 
     def create
         user = user.create(user_params)
-        render json: user
+        if user.valid?
+            render json: user, status: :created
+        else
+            render json: {errors: user.erros.full_messages}, status: :unprocessable_entity
+        end
     end
 
     def index

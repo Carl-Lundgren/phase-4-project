@@ -2,6 +2,7 @@ import React, {useState} from "react";
 
 function SignUpForm({setUser}) {
   const [username, setUsername] = useState("")
+  const [errors, setErrors] = useState ("")
   
   function handleSubmit(e) {
     e.preventDefault()
@@ -12,8 +13,17 @@ function SignUpForm({setUser}) {
       },
       body: JSON.stringify({username: username}),
     }).then(r=>{
-      console.log(r)
-      r.json().then(user => setUser(user))
+      if(r.ok){
+        r.json().then(user => setUser(user))
+      } else {
+        r.json().then((errors => setErrors(errors.errors)))
+      }
+    })
+  }
+
+  const displayError = ()=> {
+    return errors.map(error => {
+      return <div>{error}</div>
     })
   }
 
@@ -28,6 +38,7 @@ function SignUpForm({setUser}) {
           onChange={e=> setUsername(e.target.value)}
         />
       </form>
+      {errors ? <span>{errors && displayError()}</span>: null}
     </div>
   );
 }
